@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Guess number</title>
+</head>
+<body>
+	<p>var跟let的差別:<br>有作用域差別，var就算在if裡面，還是可以拿到外面用; 但是let就不行。</p>
+	<p>不過如果是用在function裡面，因為function非常嚴謹，所以都無法拿出來用。</p>
+	<script type="text/javascript">
+		let score = 100; //ES6條件式判斷
+		// if (score > 60) {
+		// 	console.log("good");
+		// }
+		// else console.log("bad");
+		let message = score > 60 ? console.log("good") : console.log("bad");
+
+		let x = Math.random() *100;
+		console.log(x);
+		console.log(Math.round(x)); //四捨五入
+		console.log(Math.floor(x)); //無條件進位
+		console.log(Math.ceil(x)); //無條件捨去
+	</script>
+	<input type="text" id = "num">
+	<button id = "bt" onclick="guess()">CLICK</button>
+	<div id="output"></div>
+	<script>
+		var answer = Math.round(Math.random() *100);
+		console.log(answer);
+		function guess() {
+			var num = document.getElementById("num").value; //切忌如果沒有.value不會抓到值，只會抓到整個標籤!!!!
+			var output = document.getElementById("output");
+			document.getElementById("num").value = ""; //輸入完後自動清空
+			if (num != "" && !isNaN(num) && num != " "){
+				// if (num > answer){
+				// 	output.textContent = "小一點";
+				// }
+				// else if (num < answer){
+				// 	output.textContent = "大一點";
+				// }
+				// else if (num == answer){
+				// 	alert("死了");
+				// }
+				switch(true){
+					case num > answer:
+						output.textContent = "小一點";
+						break;
+					case num < answer:
+						output.textContent = "大一點";
+						break;
+					case num == answer:
+						alert("死了",location.reload()); //按下確定後自動重整頁面
+				}
+			}
+			else output.textContent = "請輸入正確的數字";
+		}
+	</script>
+
+</body>
+</html>

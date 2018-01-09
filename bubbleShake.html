@@ -1,0 +1,49 @@
+<body onload="draw();">
+	<script>
+		var brandColours = ['#CA7FFF', '#9773E8', '#8F8BFF', '#738EE8', '#7FBFFF', 'hotpink'];
+var bucket = [];
+
+function draw () {
+  var canvas = document.getElementById('fun');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  var context = canvas.getContext('2d');
+  
+  if (bucket.length) {
+    bucket.forEach(function(circle){
+      circle.x = circle.x + randomNum(-2,1);
+      circle.y = circle.y + randomNum(-2,1);
+      var x = circle.x;
+      var y = circle.y;
+      drawCircle(x, y, circle.radius, circle.color, context);
+    });
+  } else {
+    for (var i = 0; i < 100; i++) {
+      var x = randomNum(0,canvas.width);
+      var y = randomNum(0,canvas.height);
+      var color = brandColours[randomNum(0,brandColours.length)];
+      drawCircle(x, y, 50, color, context);
+      bucket.push({
+        x: x,
+        y: y,
+        radius: randomNum(5,50),
+        color: color
+      });
+    }    
+  }
+  window.requestAnimationFrame(draw);
+}
+
+function randomNum (from, to) {
+  return Math.ceil(Math.random() * (to - from) + from);
+}
+
+function drawCircle (x, y, radius, color, context) {
+  context.beginPath();
+  context.arc(x, y, radius, 0, Math.PI * 2, true);
+  context.fillStyle = color;
+  context.fill();
+}
+	</script>
+  <canvas id="fun"></canvas>
+</body>

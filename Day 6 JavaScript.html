@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+	<head>
+	<meta charset = "UTF-8">
+	<title>Day6 JavaScript</title>
+	</head>
+	<body>
+		<p id = "otpt"></p>		
+		<p id = "otpt2"></p>
+		
+		<div id = "otpt3"></div>
+		
+		<script> //陣列長度可以用 length表示
+			function abc()
+			{
+				var MyAry = ["Apple","Banana","Cat"];
+				for (var i = 0; i < MyAry.length; i++)
+				{
+					console.log(MyAry[i]);
+				}
+			}
+			abc();
+			
+		</script>
+		
+		<script> //JavaScript裡面可以塞HTML的語法，配合 "" 與 innerHTML
+			var data = {
+				name:"Ejgru",
+				email:"king138786@gmail.com"
+			}
+			console.log(data.name);
+			var c = "<p>姓名: " + data.name + "</p>";
+			c += "<p>電子郵件: " + data.email + "</p>"
+			console.log(c);
+			var otpt = document.getElementById("otpt");
+			otpt.innerHTML = c;
+
+		</script>
+		
+		<script> //function
+			var data2 = {
+				name:"Ejgru",
+				email:"king138786@gmail.com"
+			}
+			var d = data2.name; e = data2.email;
+			function output2 (X)
+			{
+				var otpt2 = document.getElementById("otpt2");
+				otpt2.innerHTML = X;
+			}
+			output2(d);
+		</script>
+		
+		<script> //JavaScript寫出HTML的form
+			var data3 = {
+				name:"Ejgru",
+				mail:"king138786@gmail.com",
+				age: 23,
+			}
+			var ul = document.createElement("ul")
+			var content = "<li>姓名：" + data3.name + "</li>";
+			content += "<li>郵件：" + data3.mail + "</li>";
+			content += "<li>年齡：" + data3.age + "</li>";
+			ul.innerHTML = content;
+			document.getElementById("otpt3").appendChild(ul);
+		</script>
+		
+		<script> // Switch 是針對幾個案例然後排除其他例外情況。
+		/*var x = prompt("Enter in number: ")
+		switch(x)
+		{
+			case "abc":
+				alert("One");
+				break;
+			default:
+				alert("超出範圍");
+				break;
+		}*/
+		</script>
+		<script>
+			for(var i = 1; i < 10; i++)
+			{
+				if (i < 10) continue;
+				alert(i);
+			}
+			var sample = "用document.write直接output JavaScript的內容"
+			document.write(sample);
+		</script>
+	</body>
+</html>

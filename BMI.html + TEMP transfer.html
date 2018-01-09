@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 注意大小寫!!!!!!!!!!! -->
+
+<head>
+	<meta charset="UTF-8">
+	<title>BMI + TEMP transfer</title>
+</head>
+<body>
+	體重<input type="text" id="weight">
+	身高<input type="text" id="height">
+	<button id="bt">計算</button>
+	<div id="output"></div>
+
+	<script>
+		function BMI() {
+			var w = document.getElementById('weight').value; //注意Value!!!!!! 
+			var h = document.getElementById('height').value; //注意Value!!!!!!
+			var bmi = w / Math.pow((h/100),2);
+			var o = document.getElementById("output");
+			o.textContent = `你的BMI值為：　${bmi}`; //格式化輸出
+			console.log(bmi);
+		}
+		let bt = document.getElementById("bt");
+		bt.addEventListener("click", function(){
+			BMI();
+		})
+	</script>
+	請輸入你要轉換的溫度：<br>
+	華氏：<input type="text" id="doc">
+	攝氏：<input type="text" id="dof">
+	<button id="bt2" onclick = "temp()">計算</button>
+	<div id="output2"></div>
+	<script>
+
+		function temp(){
+			var doc = document.getElementById('doc').value; //注意Value!!!!!!
+			var dof = document.getElementById('dof').value; //注意Value!!!!!!
+			var output2 = document.getElementById('output2');
+			if(doc == "" &&  !isNaN(dof)){
+				var doc2 = (dof-32) * 5 / 9;
+				output2.textContent = "您輸入的華氏溫度" + dof +"度F 轉換為攝氏溫度為: " + doc2 + "度C";
+			}
+			else if(dof == ""  && !isNaN(doc)){
+				var dof2 = cdo * 9 / 5 + 32;
+				output2.textContent = "您輸入的攝氏溫度" + doc +"度C 轉換為華氏溫度為: " + dof2 + "度F";
+			}
+			else{
+				output2.textContent = "請單獨輸入一種溫度或者請輸入數字。"	
+			}
+		}
+
+	</script>
+
+	<input type="text" id = "temp2">
+	<select id = "units">
+		<option value="matric">攝氏</option>
+		<option value="imperial">華氏</option>
+	</select>
+	<button id = "bt3" onclick="">轉換</button>
+	<div id="output3"></div>
+	<script>
+		var bt3 = document.getElementById("bt3");
+		function temp_change() {
+			var output3 = document.getElementById("output3");
+			var temp2 = document.getElementById("temp2").value;
+			var units = document.getElementById("units").value;
+			var newTemp;
+			if (units == "matric"){
+				newTemp = temp2 * 9 / 5 + 32;
+				output3.textContent = `華氏溫度為:${newTemp}度`;
+			}else{
+				newTemp = (temp2-32) * 5 / 9;
+				output3.textContent = `攝氏溫度為:${newTemp}度`;
+			}
+		}
+		bt3.addEventListener("click", function() {
+			temp_change();
+		})
+	</script>
+	
+
+</body>
+</html>

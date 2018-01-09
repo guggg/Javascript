@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>匯率換算</title>
+  </head>
+  <body>
+    <input type="text" id = "twd">TWD =
+    <input type="text" id = "usd">USD =
+    <input type="text" id = "jpd">JPD =
+    <input type="text" id = "krd">KRD
+    <div id="output"></div>
+    <br><br><button type="button" id = "bt" name="button">轉換</button>
+    <script type="text/javascript">
+      function transfer(){
+        var outpur = document.getElementById('output');
+        var twd = document.getElementById('twd').value;
+        var usd = document.getElementById('usd').value;
+        var jpd = document.getElementById('jpd').value;
+        var krd = document.getElementById('krd').value;
+        if(twd != 0 && !isNaN(twd) && usd == "" && jpd == "" && krd == ""){
+          usd = Math.round(twd /29.65* 1000) /1000;
+          jpd = Math.round(twd /0.26* 10) /10;
+          krd = Math.round(twd /0.0253 *10) /10;
+          document.getElementById('usd').value = usd;
+          document.getElementById('jpd').value = jpd;
+          document.getElementById('krd').value = krd;
+        }
+        else if(usd != 0 && !isNaN(usd) && twd == "" && jpd == "" && krd == ""){
+          twd = Math.round(usd *29.65* 10) /10;
+          jpd = Math.round(usd *114* 10) /10;
+          krd = Math.round(usd *1171.9 *10) /10;
+          document.getElementById('twd').value = twd;
+          document.getElementById('jpd').value = jpd;
+          document.getElementById('krd').value = krd;
+        }
+        else if(jpd != 0 && !isNaN(jpd) && twd == "" && usd == "" && krd == ""){
+          twd = Math.round(jpd /26 * 10) /10;
+          usd = Math.round(jpd /100* 10) /10;
+          krd = Math.round(jpd *10.3 *10) /10;
+          document.getElementById('twd').value = twd;
+          document.getElementById('usd').value = usd;
+          document.getElementById('krd').value = krd;
+        }
+        else if (krd != 0 && !isNaN(krd) && twd == "" && usd == "" && jpd == "") {
+          twd = Math.round(krd *0.0253* 100) /100;
+          usd = Math.round(krd /1171.9* 10) /10;
+          jpd = Math.round(krd /10.3 *10) /10;
+          document.getElementById('twd').value = twd;
+          document.getElementById('usd').value = usd;
+          document.getElementById('jpd').value = jpd;
+        }
+        else if (isNaN(twd) || isNaN(usd) || isNaN(jpd) || isNaN(krd)) {
+          output.textContent = "請輸入數字";
+        }
+        else {
+          output.textContent = "請單獨輸入一種貨幣";
+        }
+      }
+      var bt = document.getElementById('bt');
+      bt.addEventListener('click', function() {
+        transfer();
+      })
+    </script>
+  </body>
+</html>

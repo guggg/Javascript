@@ -1,0 +1,88 @@
+<!doctype html>
+
+<!-- span 區隔某範圍文字 -->
+<!-- JavaScript會區別大小寫 -->
+
+<html>
+	<head>
+		<meta charset = "UTF-8">
+		<title>Day5 JavaScript</title>
+	</head>
+	<body>
+		<h1 id = "title"></h1>
+		<p class = "box">1</p>
+		<p class = "box">2</p>
+		<p class = "box">3</p>
+		<p class = "box">4</p>
+		
+		<p id = "output"></p>
+		<p id = "output2"></p>
+		<p id = "a"></p>
+
+		
+		<input type = "text" id = "score"></input>
+		<button id = "bt">送出</button>
+		<p id = "scoreOutput"></p>
+		<script>
+		document.getElementById("bt").onclick = function(){ //要做的事情放在大括號內
+			var score = document.getElementById("score").value;
+			var scoreOutput = document.getElementById("scoreOutput");
+				if (isNaN(score)){ //判斷數值
+					scoreOutput.textContent = "請輸入正確的數值";
+					}
+				else if(score >= 60){
+					scoreOutput.textContent = "你的成績為:"+score+"，你合格了";
+					}
+				else{
+					scoreOutput.textContent = "你的成績為:"+score+"，廢物";
+					}
+		}
+		/*var score2 = prompt("成績:");
+		if (score2 >= 60) alert("及格");
+		else alert("廢物");*/    <!-- 另外一種寫法 -->
+		</script>
+		
+		<script> //JavaScript 標籤
+			var x = 200; //只能定義 英文或符號 $跟_， let也可定義
+			var y = "string";
+			var z = true; //Boolean
+			var list = [123, 456, "string", false];
+			//alert(x); //提示視窗
+			//confirm("Sure?"); //確認視窗 (Yes/No)
+			//prompt("Who are you?"); //輸入視窗
+			
+			console.log(x); // console.log => 檢查元素，debugg然後找出元素用的
+			console.log(y);
+			console.log(z);
+			console.log(list[1+1]);
+			
+			var q = document.getElementById("title"); //抓元素
+			console.log(q);
+			var r = document.getElementsByClassName("box"); //抓多元素 Element 要+ s
+			console.log(r[0]); //抓取目標為多個，會變陣列，所以可以抓陣列 / 也可以寫在上面function的最後面 ("box")[0]
+			
+		</script>
+		<script>
+			var output = document.getElementById("output"); //先抓變數，再叫它做事情
+			console.log(output);
+			//output.textContent = "12316015"; //只限純文字
+			output.innerHTML = "<h1>12316015</h1>";	//可加HTML語法
+			
+			document.getElementById("output2").textContent = "123123"; //一次全部做
+		</script>
+		<!-- <script src = "FSJ.js"> //檔案仔入 -->
+		<script>
+		let c = 40;
+		if (c > 50){
+			console.log("成立");	
+		}
+		else console.log("不成立");
+		var a = 1+"1"; b = 1+1;
+		//output.innerHTML = a;
+		//output.innerHTML = b;
+		</script>  
+		
+		<h1 onclick = "JavaScript:alert('安三小')">安安</h1> 
+		<ruby>注音<rt>ㄓㄨˋㄧㄣ</rt></ruby>
+	</body>
+</html>

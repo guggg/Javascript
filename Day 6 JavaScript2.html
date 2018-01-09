@@ -1,0 +1,58 @@
+<!doctype html>
+
+<!-- 利用html的table加上for迴圈，顯示陣列裡面的東西 -->
+<!-- document.write 可以直接output JavaScript的內容 -->
+
+<html>
+	<head>
+		<meta charset = "UTF-8">
+		<title>Day 6 JavaScript2</title>
+	</head>
+	<body>
+		<input type = "text" id = "enter">
+		<button id = "bt">新增事項</button>
+		<ul id = "todo"></ul>
+		<script>
+			/*document.getElementById("bt").onclick = function()  //全部完成之後，使點擊變成一function，每點一次執行function一次
+			{
+				var li = document.createElement("li");  //定義一個li()list of HTML
+				var listValue = document.getElementById("enter").value; //定義抓使用者輸入內容
+				var text = document.createTextNode(listValue); //因輸入的文字內容沒有節點，定義listValue節點
+				li.appendChild(text); //append text (使用者輸入內容) 到li
+				document.getElementById("todo").appendChild(li); //todo與li結合
+				document.getElementById("enter").value = "新增成功"; //清空輸入框，在使用者按下'新增事項'按鈕
+			}*/
+		</script>
+		<script>
+			function NewItem(){
+				var li = document.createElement("li");  //定義一個li()list of HTML
+				var listValue = document.getElementById("enter").value; //定義抓使用者輸入內容
+				var text = document.createTextNode(listValue); //因輸入的文字內容沒有節點，定義listValue節點
+				li.appendChild(text); //append text (使用者輸入內容) 到li
+				document.getElementById("todo").appendChild(li); //todo與li結合
+				document.getElementById("enter").value = ""; //清空輸入框，在使用者按下'新增事項'按鈕
+				
+				var span = document.createElement("span");
+				var spanName = document.createTextNode("-Checked");
+				span.appendChild(spanName);
+				li.appendChild(span);
+				span.className = "close";
+			}
+			var bt2 = document.getElementById("bt"); //抓取button
+			bt2.addEventListener("click", function(){ //把button加到監聽
+				NewItem();
+				})
+		</script>
+		
+		<table border = "2">
+			<script>
+			var drinksname = ["soda", "cola", "red tea", "milk"];
+			for (var i = 0; i < drinksname.length; i++)
+			{
+			document.write("<tr><td>飲料" + (i+1) + "</td>");
+			document.write("<td>" + drinksname[i] + "</td></tr>");
+			}
+			</script>
+		</table>
+	</body>
+</html>

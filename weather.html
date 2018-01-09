@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AJAX</title>
+</head>
+<body>
+	<div id="output"></div>
+	<script>
+		let xhr = new XMLHttpRequest(); //向XML請求資料
+		let url = "weather.xml"; //名叫 weather.xml的檔案
+		xhr.onreadystatechange = function(){ //當狀態改變後，就執行以下function
+			if(this.readyState==4 && this.status==200){ //200為網頁呈現正常狀態
+				console.log(this.responseXML);
+				var t = this.responseXML;
+				document.getElementById("output").textContent = t;
+				var c = t.getElementsByTagName('location');
+				for (var i = 0; i < c.length; i++){
+					//console.log(c[i].children[0].childNodes[0]); //直接抓到字 - childNode可以抓標籤裡面的字
+					console.log(c[i].children[1].children[1].children[2].children[0].childNodes[0]);
+				}
+			}
+		}
+		xhr.open("GET",url,true);
+		xhr.send();
+	</script>
+</body>
+</html>

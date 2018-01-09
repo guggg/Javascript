@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Closure</title>
+</head>
+<body>
+	<script>
+		function dogHouse(){
+			var count = 0;
+			function countDog(){
+				count++;
+				console.log(count);
+			}
+			return countDog;
+		}
+
+		var countDog = dogHouse();
+		var countCat = dogHouse();
+		var countMon = dogHouse();
+		countDog(); //1
+		countDog(); //2
+		countDog(); //3
+		countCat(); //1
+		countCat(); //2
+
+
+		dogHouse(); //沒有值出現
+
+		console.log(countCat);          //countDog()
+		console.log(countCat());        //3 跟 undefined
+		console.log(typeof countCat);   //function
+		console.log(typeof countCat()); //4 跟 undefined
+
+		console.log(dogHouse);  		//dogHouse()
+		console.log(dogHouse());        //countDog()
+		console.log(typeof dogHouse);	//function
+		console.log(typeof dogHouse()); //function
+		
+	</script>
+</body>
+</html>

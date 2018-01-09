@@ -1,0 +1,68 @@
+<!doctype html>
+
+<!-- 利用html的table加上for迴圈，顯示陣列裡面的東西 -->
+<!-- document.write 可以直接output JavaScript的內容 -->
+
+<html>
+	<head>
+		<meta charset = "UTF-8">
+		<title>Day 6 JavaScript2</title>
+	</head>
+	<body>
+		<input type = "text" id = "enter">
+		<button id = "bt">新增事項</button>
+		<ul id = "todo"></ul>
+		<script>
+			/*document.getElementById("bt").onclick = function()  //全部完成之後，使點擊變成一function，每點一次執行function一次
+			{
+				var li = document.createElement("li");  //定義一個li()list of HTML
+				var listValue = document.getElementById("enter").value; //定義抓使用者輸入內容
+				var text = document.createTextNode(listValue); //因輸入的文字內容沒有節點，定義listValue節點
+				li.appendChild(text); //append text (使用者輸入內容) 到li
+				document.getElementById("todo").appendChild(li); //todo與li結合
+				document.getElementById("enter").value = "新增成功"; //清空輸入框，在使用者按下'新增事項'按鈕
+			}*/
+		</script>
+		<script>
+			function NewItem()
+			{
+				var li = document.createElement("li");  //定義一個li()list of HTML
+				var listValue = document.getElementById("enter").value; //定義抓使用者輸入內容
+				var text = document.createTextNode(listValue); //因輸入的文字內容是 行內 沒有節點，定義listValue節點
+				li.appendChild(text); //append text (使用者輸入內容) 到li
+				document.getElementById("todo").appendChild(li); //todo與li結合
+				document.getElementById("enter").value = ""; //清空輸入框，在使用者按下'新增事項'按鈕後
+				
+				var span = document.createElement("span"); //加一個span要在layout加入 check字樣
+				var spanName = document.createTextNode("-Checked"); //因輸入的文字內容是 行內 沒有節點，定義spanName節點
+				span.appendChild(spanName); //加入節點
+				li.appendChild(span); //span加入li(新增事項裡面)
+				span.className = "close"; //span class = "close"
+
+				var closeBT = document.getElementsByClassName("close"); //定義 點擊刪除鈕，去抓close的資料，closeBT變成一個陣列
+				for (var i = 0; i < closeBT.length; i++){ //抓每一個新增的事項? 然後如果點第三個 就跑3次 到i = 2?
+					closeBT[i].onclick = function(){ //針對點擊 "checked(clsoe)" 寫一個function{
+						let el = this.parentElement; //點擊後，針對this(點擊到的這個)的父元素抓到
+						el.remove(); //刪除
+					}
+
+				}
+			}
+			var bt2 = document.getElementById("bt"); //抓取button
+			bt2.addEventListener("click", function(){ //把button加到監聽
+				NewItem();
+				})
+		</script>
+		
+		<table border = "2">
+			<script>
+			var drinksname = ["soda", "cola", "red tea", "milk"];
+			for (var i = 0; i < drinksname.length; i++)
+			{
+			document.write("<tr><td>飲料" + (i+1) + "</td>");
+			document.write("<td>" + drinksname[i] + "</td></tr>");
+			}
+			</script>
+		</table>
+	</body>
+</html>
