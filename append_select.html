@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        .is-active{
+            color: #ff0000;
+            font-size: 5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn">add item</div>
+    <ul class="one">
+        <li class="two">item1</li>
+    </ul>
+    <script>
+        var itemNum = 1;
+        $(".btn").on('click', function(){
+            $('.one').append('<li class="two">item'+(++itemNum)+'</li>');
+            console.log('click');
+            $("li[class='two']").on('click', function(){
+            // console.log(log);
+            console.log('click2');
+            $(this).addClass('is-active');
+            })
+        })
+
+       
+    </script>
+</body>
+</html>
